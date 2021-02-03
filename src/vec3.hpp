@@ -113,6 +113,8 @@ inline vec3 unit_vector(const vec3& vec) {
 	return vec / vec.length();
 }
 
+// random vectors
+
 inline vec3 random_in_unit_sphere() {
 	while (true) {
 		vec3 p = vec3::random(-1, 1);
@@ -131,6 +133,14 @@ inline vec3 random_in_hemisphere(const vec3& normal) {
 
 inline vec3 random_unit_vector() {
 	return unit_vector(random_in_unit_sphere());
+}
+
+inline vec3 random_in_unit_disk() {
+	while (true) {
+		vec3 p = vec3(random_double(-1, 1), random_double(-1, 1), 0);
+		if (p.length_squared() >= 1) continue;
+		return p;
+	}
 }
 
 // reflection and refractioin
